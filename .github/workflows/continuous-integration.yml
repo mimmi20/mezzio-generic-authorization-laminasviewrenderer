@@ -293,4 +293,4 @@ jobs:
           flags: "phpunit"
 
       - name: "Run mutation tests with infection/infection"
-        run: "vendor/bin/infection --min-covered-msi=85 --min-msi=85 --coverage=.build/coverage"
+        run: "vendor/bin/infection --min-covered-msi=71 --min-msi=71 --coverage=.build/coverage"
