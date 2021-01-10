@@ -30,5 +30,5 @@ parameters:
 #    - '~Useless \@throws~'
 #    - '~Missing \@throws~'
 #    - '~Error suppression via "@" should not be used~'
-#    - '~Call to function assert\(\) with true will always evaluate to true~'
-#    - '~Instanceof between .* and .* will always evaluate to true~'
+    - '~Call to function assert\(\) with true will always evaluate to true~'
+    - '~Instanceof between .* and .* will always evaluate to true~'
