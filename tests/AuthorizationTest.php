@@ -20,8 +20,7 @@ use Psr\Http\Message\ServerRequestInterface;
 final class AuthorizationTest extends TestCase
 {
     /**
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \PHPUnit\Framework\MockObject\RuntimeException
+     * @throws \PHPUnit\Framework\Exception
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      *
      * @return void
@@ -47,8 +46,7 @@ final class AuthorizationTest extends TestCase
     }
 
     /**
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \PHPUnit\Framework\MockObject\RuntimeException
+     * @throws \PHPUnit\Framework\Exception
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      *
      * @return void
@@ -82,8 +80,7 @@ final class AuthorizationTest extends TestCase
     }
 
     /**
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \PHPUnit\Framework\MockObject\RuntimeException
+     * @throws \PHPUnit\Framework\Exception
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      *
      * @return void
