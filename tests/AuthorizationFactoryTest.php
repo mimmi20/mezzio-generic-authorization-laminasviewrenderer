@@ -9,32 +9,31 @@
  */
 
 declare(strict_types = 1);
+
 namespace MezzioTest\GenericAuthorization\LaminasView;
 
 use Interop\Container\ContainerInterface;
 use Mezzio\GenericAuthorization\AuthorizationInterface;
 use Mezzio\GenericAuthorization\LaminasView\Authorization;
 use Mezzio\GenericAuthorization\LaminasView\AuthorizationFactory;
+use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
+use SebastianBergmann\RecursionContext\InvalidArgumentException;
+
+use function assert;
 
 final class AuthorizationFactoryTest extends TestCase
 {
-    /** @var AuthorizationFactory */
-    private $factory;
+    private AuthorizationFactory $factory;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         $this->factory = new AuthorizationFactory();
     }
 
     /**
-     * @throws \PHPUnit\Framework\Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     *
-     * @return void
+     * @throws Exception
+     * @throws InvalidArgumentException
      */
     public function testInvocation(): void
     {
@@ -48,7 +47,7 @@ final class AuthorizationFactoryTest extends TestCase
             ->with(AuthorizationInterface::class)
             ->willReturn($authorizationInterface);
 
-        \assert($container instanceof ContainerInterface);
+        assert($container instanceof ContainerInterface);
         $authorization = ($this->factory)($container);
 
         self::assertInstanceOf(Authorization::class, $authorization);

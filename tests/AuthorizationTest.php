@@ -9,21 +9,22 @@
  */
 
 declare(strict_types = 1);
+
 namespace MezzioTest\GenericAuthorization\LaminasView;
 
 use Mezzio\Authentication\UserInterface;
 use Mezzio\GenericAuthorization\AuthorizationInterface;
 use Mezzio\GenericAuthorization\LaminasView\Authorization;
+use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
+use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
 final class AuthorizationTest extends TestCase
 {
     /**
-     * @throws \PHPUnit\Framework\Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     *
-     * @return void
+     * @throws Exception
+     * @throws InvalidArgumentException
      */
     public function testIsGranted(): void
     {
@@ -46,10 +47,8 @@ final class AuthorizationTest extends TestCase
     }
 
     /**
-     * @throws \PHPUnit\Framework\Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     *
-     * @return void
+     * @throws Exception
+     * @throws InvalidArgumentException
      */
     public function testIsGrantedForUser(): void
     {
@@ -80,10 +79,8 @@ final class AuthorizationTest extends TestCase
     }
 
     /**
-     * @throws \PHPUnit\Framework\Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     *
-     * @return void
+     * @throws Exception
+     * @throws InvalidArgumentException
      */
     public function testIsNotGrantedForUser(): void
     {

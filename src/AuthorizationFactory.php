@@ -9,21 +9,19 @@
  */
 
 declare(strict_types = 1);
+
 namespace Mezzio\GenericAuthorization\LaminasView;
 
 use Interop\Container\ContainerInterface;
 use Mezzio\GenericAuthorization\AuthorizationInterface;
+use Psr\Container\ContainerExceptionInterface;
 
 final class AuthorizationFactory
 {
     /**
      * Create and return a navigation view helper instance.
      *
-     * @param ContainerInterface $container
-     *
-     * @throws \Psr\Container\ContainerExceptionInterface
-     *
-     * @return Authorization
+     * @throws ContainerExceptionInterface
      */
     public function __invoke(ContainerInterface $container): Authorization
     {
