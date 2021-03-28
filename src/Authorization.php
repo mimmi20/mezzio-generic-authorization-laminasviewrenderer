@@ -9,6 +9,7 @@
  */
 
 declare(strict_types = 1);
+
 namespace Mezzio\GenericAuthorization\LaminasView;
 
 use Laminas\View\Helper\AbstractHelper;
@@ -18,12 +19,8 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class Authorization extends AbstractHelper
 {
-    /** @var AuthorizationInterface */
-    private $authorization;
+    private AuthorizationInterface $authorization;
 
-    /**
-     * @param \Mezzio\GenericAuthorization\AuthorizationInterface $authorization
-     */
     public function __construct(AuthorizationInterface $authorization)
     {
         $this->authorization = $authorization;
@@ -31,13 +28,6 @@ final class Authorization extends AbstractHelper
 
     /**
      * Check if a role is granted for a resource
-     *
-     * @param string|null                 $role
-     * @param string|null                 $resource
-     * @param string|null                 $privilege
-     * @param ServerRequestInterface|null $request
-     *
-     * @return bool
      */
     public function isGranted(?string $role = null, ?string $resource = null, ?string $privilege = null, ?ServerRequestInterface $request = null): bool
     {
@@ -46,13 +36,6 @@ final class Authorization extends AbstractHelper
 
     /**
      * Check if a role is granted for a user
-     *
-     * @param UserInterface               $user
-     * @param string|null                 $resource
-     * @param string|null                 $privilege
-     * @param ServerRequestInterface|null $request
-     *
-     * @return bool
      */
     public function isGrantedForUser(UserInterface $user, ?string $resource = null, ?string $privilege = null, ?ServerRequestInterface $request = null): bool
     {
