@@ -14,7 +14,7 @@
   "require": {
     "php": "^7.4.0 || ^8.0.0",
     "mezzio/mezzio-authentication": "^1.1.0 || ^1.2.1",
-    "mezzio/mezzio-laminasviewrenderer": "^2.2.0",
+    "mezzio/mezzio-laminasviewrenderer": "^2.3.0",
     "mimmi20/mezzio-generic-authorization": "^2.0.1"
   },
   "conflict": {
