@@ -35,20 +35,47 @@ final class ConfigProviderTest extends TestCase
     {
         $config = ($this->provider)();
         self::assertIsArray($config);
-
+        self::assertCount(1, $config);
         self::assertArrayHasKey('view_helpers', $config);
 
         $viewHelpers = $config['view_helpers'];
         self::assertIsArray($viewHelpers);
+        self::assertCount(2, $viewHelpers);
         self::assertArrayHasKey('factories', $viewHelpers);
         self::assertArrayHasKey('aliases', $viewHelpers);
 
         $factories = $viewHelpers['factories'];
         self::assertIsArray($factories);
+        self::assertCount(1, $factories);
         self::assertArrayHasKey(Authorization::class, $factories);
 
         $aliases = $viewHelpers['aliases'];
         self::assertIsArray($aliases);
+        self::assertCount(2, $aliases);
+        self::assertArrayHasKey('authorization', $aliases);
+        self::assertArrayHasKey('Authorization', $aliases);
+    }
+
+    /**
+     * @throws Exception
+     * @throws InvalidArgumentException
+     */
+    public function testReturnedArrayContainsDependencies2(): void
+    {
+        $viewHelpers = $this->provider->getViewHelperConfig();
+        self::assertIsArray($viewHelpers);
+        self::assertCount(2, $viewHelpers);
+        self::assertArrayHasKey('factories', $viewHelpers);
+        self::assertArrayHasKey('aliases', $viewHelpers);
+
+        $factories = $viewHelpers['factories'];
+        self::assertIsArray($factories);
+        self::assertCount(1, $factories);
+        self::assertArrayHasKey(Authorization::class, $factories);
+
+        $aliases = $viewHelpers['aliases'];
+        self::assertIsArray($aliases);
+        self::assertCount(2, $aliases);
         self::assertArrayHasKey('authorization', $aliases);
         self::assertArrayHasKey('Authorization', $aliases);
     }
