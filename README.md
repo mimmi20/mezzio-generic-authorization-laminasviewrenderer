@@ -18,17 +18,6 @@ Run
 $ composer require mimmi20/mezzio-generic-authorization-laminasviewrenderer
 ```
 
-## Usage
-
-Calling the view helper for menus in your view script:
-
-```php
-<!-- ... -->
-
-<?= $this->navigation('default')->menu() ?>
-<!-- ... -->
-```
-
 ## License
 
 This package is licensed using the MIT License.
