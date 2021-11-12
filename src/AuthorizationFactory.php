@@ -16,6 +16,8 @@ use Interop\Container\ContainerInterface;
 use Mezzio\GenericAuthorization\AuthorizationInterface;
 use Psr\Container\ContainerExceptionInterface;
 
+use function assert;
+
 final class AuthorizationFactory
 {
     /**
@@ -25,8 +27,10 @@ final class AuthorizationFactory
      */
     public function __invoke(ContainerInterface $container): Authorization
     {
-        return new Authorization(
-            $container->get(AuthorizationInterface::class)
-        );
+        $genericAuth = $container->get(AuthorizationInterface::class);
+
+        assert($genericAuth instanceof AuthorizationInterface);
+
+        return new Authorization($genericAuth);
     }
 }

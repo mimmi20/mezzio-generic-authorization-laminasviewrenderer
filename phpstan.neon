@@ -13,13 +13,13 @@ parameters:
   checkGenericClassInNonGenericObjectType: false
   checkMissingIterableValueType: false
   treatPhpDocTypesAsCertain: false
-  implicitThrows: false
   exceptions:
+    implicitThrows: false
     checkedExceptionRegexes:
       - '#Exception#'
       - '#Throwable#'
     check:
       missingCheckedExceptionInThrows: true
       tooWideThrowType: true
-  ignoreErrors:
-    - '~is not subtype of Throwable~'
+#  ignoreErrors:
+#    - '~is not subtype of Throwable~'
