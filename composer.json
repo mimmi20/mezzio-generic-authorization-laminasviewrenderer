@@ -1,9 +1,8 @@
 {
   "name": "mimmi20/mezzio-generic-authorization-laminasviewrenderer",
-  "type": "library",
   "description": "Provides a viewhelper for mezzio-generic-authorization.",
-  "homepage": "https://github.com/mimmi20/mezzio-generic-authorization-laminasviewrenderer",
   "license": "MIT",
+  "type": "library",
   "authors": [
     {
       "name": "Thomas Müller",
@@ -11,17 +10,19 @@
       "role": "Developer"
     }
   ],
+  "homepage": "https://github.com/mimmi20/mezzio-generic-authorization-laminasviewrenderer",
+  "support": {
+    "issues": "https://github.com/mimmi20/mezzio-generic-authorization-laminasviewrenderer/issues",
+    "source": "https://github.com/mimmi20/mezzio-generic-authorization-laminasviewrenderer"
+  },
   "require": {
     "php": "^7.4.3 || ^8.0.0",
-    "mezzio/mezzio-authentication": "^1.1.0 || ^1.2.1",
+    "mezzio/mezzio-authentication": "^1.1.0",
     "mezzio/mezzio-laminasviewrenderer": "^2.3.0",
     "mimmi20/mezzio-generic-authorization": "^2.0.5"
   },
-  "conflict": {
-    "container-interop/container-interop": "<1.2.0",
-    "mezzio/mezzio-authorization": "*"
-  },
   "require-dev": {
+    "ergebnis/composer-normalize": "^2.18.0",
     "laminas/laminas-dependency-plugin": "^2.2.0",
     "laminas/laminas-servicemanager": "^3.10.0",
     "mimmi20/coding-standard": "^2.5.1",
@@ -30,19 +31,14 @@
     "phpstan/phpstan-deprecation-rules": "^1.0.0",
     "phpstan/phpstan-phpunit": "^1.0.0",
     "phpunit/phpunit": "^9.5.10",
-    "rector/rector": "^0.12.5"
+    "rector/rector": "^0.12.6"
+  },
+  "conflict": {
+    "container-interop/container-interop": "<1.2.0",
+    "mezzio/mezzio-authorization": "*"
   },
   "suggest": {
     "laminas/laminas-servicemanager": "to use the factories"
-  },
-  "config": {
-    "preferred-install": "dist",
-    "sort-packages": true
-  },
-  "extra": {
-    "laminas": {
-      "config-provider": "Mezzio\\GenericAuthorization\\LaminasView\\ConfigProvider"
-    }
   },
   "autoload": {
     "psr-4": {
@@ -54,8 +50,13 @@
       "MezzioTest\\GenericAuthorization\\LaminasView\\": "tests/"
     }
   },
-  "support": {
-    "issues": "https://github.com/mimmi20/mezzio-generic-authorization-laminasviewrenderer/issues",
-    "source": "https://github.com/mimmi20/mezzio-generic-authorization-laminasviewrenderer"
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "extra": {
+    "laminas": {
+      "config-provider": "Mezzio\\GenericAuthorization\\LaminasView\\ConfigProvider"
+    }
   }
 }
