@@ -2,7 +2,7 @@
 /**
  * This file is part of the mimmi20/mezzio-generic-authorization-laminasviewrenderer package.
  *
- * Copyright (c) 2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2021-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -10,15 +10,12 @@
 
 declare(strict_types = 1);
 
-namespace MezzioTest\GenericAuthorization\LaminasView;
+namespace Mimmi20\Mezzio\GenericAuthorization\LaminasView;
 
-use Interop\Container\ContainerInterface;
-use Mezzio\GenericAuthorization\AuthorizationInterface;
-use Mezzio\GenericAuthorization\LaminasView\Authorization;
-use Mezzio\GenericAuthorization\LaminasView\AuthorizationFactory;
+use Mimmi20\Mezzio\GenericAuthorization\AuthorizationInterface;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
-use SebastianBergmann\RecursionContext\InvalidArgumentException;
+use Psr\Container\ContainerInterface;
 
 use function assert;
 
@@ -26,15 +23,13 @@ final class AuthorizationFactoryTest extends TestCase
 {
     private AuthorizationFactory $factory;
 
+    /** @throws void */
     protected function setUp(): void
     {
         $this->factory = new AuthorizationFactory();
     }
 
-    /**
-     * @throws Exception
-     * @throws InvalidArgumentException
-     */
+    /** @throws Exception */
     public function testInvocation(): void
     {
         $authorizationInterface = $this->createMock(AuthorizationInterface::class);

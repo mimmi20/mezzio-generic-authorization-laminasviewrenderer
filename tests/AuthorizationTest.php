@@ -2,7 +2,7 @@
 /**
  * This file is part of the mimmi20/mezzio-generic-authorization-laminasviewrenderer package.
  *
- * Copyright (c) 2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2021-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -10,22 +10,17 @@
 
 declare(strict_types = 1);
 
-namespace MezzioTest\GenericAuthorization\LaminasView;
+namespace Mimmi20\Mezzio\GenericAuthorization\LaminasView;
 
 use Mezzio\Authentication\UserInterface;
-use Mezzio\GenericAuthorization\AuthorizationInterface;
-use Mezzio\GenericAuthorization\LaminasView\Authorization;
+use Mimmi20\Mezzio\GenericAuthorization\AuthorizationInterface;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
-use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
 final class AuthorizationTest extends TestCase
 {
-    /**
-     * @throws Exception
-     * @throws InvalidArgumentException
-     */
+    /** @throws Exception */
     public function testIsGranted(): void
     {
         $role      = 'test-role';
@@ -46,10 +41,7 @@ final class AuthorizationTest extends TestCase
         self::assertTrue($authorization->isGranted($role, $resource, $privilege, $request));
     }
 
-    /**
-     * @throws Exception
-     * @throws InvalidArgumentException
-     */
+    /** @throws Exception */
     public function testIsGrantedForUser(): void
     {
         $role1     = 'test-role1';
@@ -68,20 +60,45 @@ final class AuthorizationTest extends TestCase
         $authorizationInterface = $this->getMockBuilder(AuthorizationInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $authorizationInterface->expects(self::exactly(2))
+        $matcher                = self::exactly(2);
+        $authorizationInterface->expects($matcher)
             ->method('isGranted')
-            ->withConsecutive([$role1, $resource, $privilege, $request], [$role2, $resource, $privilege, $request])
-            ->willReturn(false, true);
+            ->willReturnCallback(
+                static function (
+                    string | null $role = null,
+                    string | null $innerResource = null,
+                    string | null $innerPrivilege = null,
+                    ServerRequestInterface | null $innerRequest = null,
+                ) use (
+                    $matcher,
+                    $role1,
+                    $role2,
+                    $resource,
+                    $privilege,
+                    $request,
+                ): bool {
+                    match ($matcher->numberOfInvocations()) {
+                        1 => self::assertSame($role1, $role),
+                        default => self::assertSame($role2, $role),
+                    };
+
+                    self::assertSame($resource, $innerResource);
+                    self::assertSame($privilege, $innerPrivilege);
+                    self::assertSame($request, $innerRequest);
+
+                    return match ($matcher->numberOfInvocations()) {
+                        1 => false,
+                        default => true,
+                    };
+                },
+            );
 
         $authorization = new Authorization($authorizationInterface);
 
         self::assertTrue($authorization->isGrantedForUser($user, $resource, $privilege, $request));
     }
 
-    /**
-     * @throws Exception
-     * @throws InvalidArgumentException
-     */
+    /** @throws Exception */
     public function testIsNotGrantedForUser(): void
     {
         $role1     = 'test-role1';
@@ -100,10 +117,35 @@ final class AuthorizationTest extends TestCase
         $authorizationInterface = $this->getMockBuilder(AuthorizationInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $authorizationInterface->expects(self::exactly(2))
+        $matcher                = self::exactly(2);
+        $authorizationInterface->expects($matcher)
             ->method('isGranted')
-            ->withConsecutive([$role1, $resource, $privilege, $request], [$role2, $resource, $privilege, $request])
-            ->willReturn(false, false);
+            ->willReturnCallback(
+                static function (
+                    string | null $role = null,
+                    string | null $innerResource = null,
+                    string | null $innerPrivilege = null,
+                    ServerRequestInterface | null $innerRequest = null,
+                ) use (
+                    $matcher,
+                    $role1,
+                    $role2,
+                    $resource,
+                    $privilege,
+                    $request,
+                ): bool {
+                    match ($matcher->numberOfInvocations()) {
+                        1 => self::assertSame($role1, $role),
+                        default => self::assertSame($role2, $role),
+                    };
+
+                    self::assertSame($resource, $innerResource);
+                    self::assertSame($privilege, $innerPrivilege);
+                    self::assertSame($request, $innerRequest);
+
+                    return false;
+                },
+            );
 
         $authorization = new Authorization($authorizationInterface);
 

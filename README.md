@@ -14,8 +14,8 @@
 
 Run
 
-```
-$ composer require mimmi20/mezzio-generic-authorization-laminasviewrenderer
+```shell
+composer require mimmi20/mezzio-generic-authorization-laminasviewrenderer
 ```
 
 ## License
