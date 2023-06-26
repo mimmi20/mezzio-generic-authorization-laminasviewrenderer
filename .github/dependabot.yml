@@ -8,7 +8,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "tuesday"
-      time: "04:00"
+      time: "05:00"
       timezone: "Europe/Berlin"
     open-pull-requests-limit: 10
     reviewers:
@@ -28,7 +28,7 @@ updates:
 #      - dependency-name: phpunit/phpunit
 #        versions:
 #          - ">= 0"
-#      - dependency-name: mezzio/mezzio-authentication
+#      - dependency-name: laminas/laminas-permissions-rbac
 #        versions:
 #          - ">= 0"
 
@@ -37,7 +37,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "tuesday"
-      time: "04:00"
+      time: "05:00"
       timezone: "Europe/Berlin"
     open-pull-requests-limit: 10
     reviewers:
