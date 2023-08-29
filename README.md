@@ -7,8 +7,8 @@
 ## Code Status
 
 [![codecov](https://codecov.io/gh/mimmi20/mezzio-generic-authorization-laminasviewrenderer/branch/master/graph/badge.svg)](https://codecov.io/gh/mimmi20/mezzio-generic-authorization-laminasviewrenderer)
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/mimmi20/mezzio-generic-authorization-laminasviewrenderer.svg)](http://isitmaintained.com/project/mimmi20/mezzio-generic-authorization-laminasviewrenderer "Average time to resolve an issue")
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/mimmi20/mezzio-generic-authorization-laminasviewrenderer.svg)](http://isitmaintained.com/project/mimmi20/mezzio-generic-authorization-laminasviewrenderer "Percentage of issues still open")
+[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/mimmi20/mezzio-generic-authorization-laminasviewrenderer.svg)](https://isitmaintained.com/project/mimmi20/mezzio-generic-authorization-laminasviewrenderer "Average time to resolve an issue")
+[![Percentage of issues still open](https://isitmaintained.com/badge/open/mimmi20/mezzio-generic-authorization-laminasviewrenderer.svg)](https://isitmaintained.com/project/mimmi20/mezzio-generic-authorization-laminasviewrenderer "Percentage of issues still open")
 
 ## Installation
 
