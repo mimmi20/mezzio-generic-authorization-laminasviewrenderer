@@ -15,6 +15,7 @@ namespace Mimmi20\Mezzio\GenericAuthorization\LaminasView;
 use Mimmi20\Mezzio\GenericAuthorization\AuthorizationInterface;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 
 use function assert;
@@ -29,7 +30,10 @@ final class AuthorizationFactoryTest extends TestCase
         $this->factory = new AuthorizationFactory();
     }
 
-    /** @throws Exception */
+    /**
+     * @throws Exception
+     * @throws ContainerExceptionInterface
+     */
     public function testInvocation(): void
     {
         $authorizationInterface = $this->createMock(AuthorizationInterface::class);
