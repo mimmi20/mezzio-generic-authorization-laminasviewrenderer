@@ -29,6 +29,8 @@ final class Authorization extends AbstractHelper
      * Check if a role is granted for a resource
      *
      * @throws void
+     *
+     * @api
      */
     public function isGranted(
         string | null $role = null,
@@ -43,6 +45,8 @@ final class Authorization extends AbstractHelper
      * Check if a role is granted for a user
      *
      * @throws void
+     *
+     * @api
      */
     public function isGrantedForUser(
         UserInterface $user,
