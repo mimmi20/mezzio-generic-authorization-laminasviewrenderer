@@ -16,6 +16,7 @@ use Laminas\View\Helper\AbstractHelper;
 use Mezzio\Authentication\UserInterface;
 use Mimmi20\Mezzio\GenericAuthorization\AuthorizationInterface;
 use Psr\Http\Message\ServerRequestInterface;
+
 use function count;
 use function iterator_to_array;
 
