@@ -17,6 +17,8 @@ use Mezzio\Authentication\UserInterface;
 use Mimmi20\Mezzio\GenericAuthorization\AuthorizationInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function count;
+
 final class Authorization extends AbstractHelper
 {
     /** @throws void */
@@ -54,10 +56,20 @@ final class Authorization extends AbstractHelper
         string | null $privilege = null,
         ServerRequestInterface | null $request = null,
     ): bool {
+        $roles = [];
+
         foreach ($user->getRoles() as $role) {
-            if ($this->authorization->isGranted($role, $resource, $privilege, $request)) {
-                return true;
+            $roles[] = $role;
+        }
+
+        if (count($roles)) {
+            foreach ($roles as $role) {
+                if ($this->authorization->isGranted($role, $resource, $privilege, $request)) {
+                    return true;
+                }
             }
+        } elseif ($this->authorization->isGranted(null, $resource, $privilege, $request)) {
+            return true;
         }
 
         return false;
