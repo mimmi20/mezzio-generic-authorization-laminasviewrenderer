@@ -18,7 +18,6 @@ use Mimmi20\Mezzio\GenericAuthorization\AuthorizationInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function count;
-use function iterator_to_array;
 
 final class Authorization extends AbstractHelper
 {
@@ -57,7 +56,11 @@ final class Authorization extends AbstractHelper
         string | null $privilege = null,
         ServerRequestInterface | null $request = null,
     ): bool {
-        $roles = iterator_to_array($user->getRoles());
+        $roles = [];
+
+        foreach ($user->getRoles() as $role) {
+            $roles[] = $role;
+        }
 
         if (count($roles)) {
             foreach ($roles as $role) {
