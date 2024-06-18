@@ -16,6 +16,8 @@ use Laminas\View\Helper\AbstractHelper;
 use Mezzio\Authentication\UserInterface;
 use Mimmi20\Mezzio\GenericAuthorization\AuthorizationInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function count;
+use function iterator_to_array;
 
 final class Authorization extends AbstractHelper
 {
@@ -54,10 +56,16 @@ final class Authorization extends AbstractHelper
         string | null $privilege = null,
         ServerRequestInterface | null $request = null,
     ): bool {
-        foreach ($user->getRoles() as $role) {
-            if ($this->authorization->isGranted($role, $resource, $privilege, $request)) {
-                return true;
+        $roles = iterator_to_array($user->getRoles());
+
+        if (count($roles)) {
+            foreach ($roles as $role) {
+                if ($this->authorization->isGranted($role, $resource, $privilege, $request)) {
+                    return true;
+                }
             }
+        } elseif ($this->authorization->isGranted(null, $resource, $privilege, $request)) {
+            return true;
         }
 
         return false;
