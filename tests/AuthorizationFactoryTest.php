@@ -14,6 +14,7 @@ declare(strict_types = 1);
 namespace Mimmi20\Mezzio\GenericAuthorization\LaminasView;
 
 use Mimmi20\Mezzio\GenericAuthorization\AuthorizationInterface;
+use Override;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
@@ -26,6 +27,7 @@ final class AuthorizationFactoryTest extends TestCase
     private AuthorizationFactory $factory;
 
     /** @throws void */
+    #[Override]
     protected function setUp(): void
     {
         $this->factory = new AuthorizationFactory();
