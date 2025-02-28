@@ -37,7 +37,7 @@
     "ext-tokenizer": "*",
     "ext-xml": "*",
     "ext-xmlwriter": "*",
-    "infection/infection": "^0.29.12",
+    "infection/infection": "^0.29.13",
     "laminas/laminas-escaper": "^2.16.0",
     "laminas/laminas-servicemanager": "^3.22.1",
     "mimmi20/coding-standard": "^6.0.15",
