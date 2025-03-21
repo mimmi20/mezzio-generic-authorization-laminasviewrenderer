@@ -14,7 +14,7 @@ declare(strict_types = 1);
 namespace Mimmi20\Mezzio\GenericAuthorization\LaminasView;
 
 use Mimmi20\Mezzio\GenericAuthorization\AuthorizationInterface;
-use Override;
+use PHPUnit\Event\NoPreviousThrowableException;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
@@ -24,18 +24,11 @@ use function assert;
 
 final class AuthorizationFactoryTest extends TestCase
 {
-    private AuthorizationFactory $factory;
-
-    /** @throws void */
-    #[Override]
-    protected function setUp(): void
-    {
-        $this->factory = new AuthorizationFactory();
-    }
-
     /**
      * @throws Exception
      * @throws ContainerExceptionInterface
+     * @throws NoPreviousThrowableException
+     * @throws \PHPUnit\Framework\MockObject\Exception
      */
     public function testInvocation(): void
     {
@@ -50,7 +43,7 @@ final class AuthorizationFactoryTest extends TestCase
             ->willReturn($authorizationInterface);
 
         assert($container instanceof ContainerInterface);
-        $authorization = ($this->factory)($container);
+        $authorization = (new AuthorizationFactory())($container);
 
         self::assertInstanceOf(Authorization::class, $authorization);
     }

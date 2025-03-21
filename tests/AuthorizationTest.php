@@ -15,13 +15,18 @@ namespace Mimmi20\Mezzio\GenericAuthorization\LaminasView;
 
 use Mezzio\Authentication\UserInterface;
 use Mimmi20\Mezzio\GenericAuthorization\AuthorizationInterface;
+use PHPUnit\Event\NoPreviousThrowableException;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 
 final class AuthorizationTest extends TestCase
 {
-    /** @throws Exception */
+    /**
+     * @throws Exception
+     * @throws NoPreviousThrowableException
+     * @throws \PHPUnit\Framework\MockObject\Exception
+     */
     public function testIsGranted(): void
     {
         $role      = 'test-role';
@@ -42,7 +47,11 @@ final class AuthorizationTest extends TestCase
         self::assertTrue($authorization->isGranted($role, $resource, $privilege, $request));
     }
 
-    /** @throws Exception */
+    /**
+     * @throws Exception
+     * @throws NoPreviousThrowableException
+     * @throws \PHPUnit\Framework\MockObject\Exception
+     */
     public function testIsGrantedForUser(): void
     {
         $role1     = 'test-role1';
@@ -99,7 +108,11 @@ final class AuthorizationTest extends TestCase
         self::assertTrue($authorization->isGrantedForUser($user, $resource, $privilege, $request));
     }
 
-    /** @throws Exception */
+    /**
+     * @throws Exception
+     * @throws NoPreviousThrowableException
+     * @throws \PHPUnit\Framework\MockObject\Exception
+     */
     public function testIsNotGrantedForUser(): void
     {
         $role1     = 'test-role1';
