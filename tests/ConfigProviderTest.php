@@ -13,25 +13,15 @@ declare(strict_types = 1);
 
 namespace Mimmi20\Mezzio\GenericAuthorization\LaminasView;
 
-use Override;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 
 final class ConfigProviderTest extends TestCase
 {
-    private ConfigProvider $provider;
-
-    /** @throws void */
-    #[Override]
-    protected function setUp(): void
-    {
-        $this->provider = new ConfigProvider();
-    }
-
     /** @throws Exception */
     public function testReturnedArrayContainsDependencies(): void
     {
-        $config = ($this->provider)();
+        $config = (new ConfigProvider())();
         self::assertIsArray($config);
         self::assertCount(1, $config);
         self::assertArrayHasKey('view_helpers', $config);
@@ -57,7 +47,7 @@ final class ConfigProviderTest extends TestCase
     /** @throws Exception */
     public function testReturnedArrayContainsDependencies2(): void
     {
-        $viewHelpers = $this->provider->getViewHelperConfig();
+        $viewHelpers = (new ConfigProvider())->getViewHelperConfig();
         self::assertIsArray($viewHelpers);
         self::assertCount(2, $viewHelpers);
         self::assertArrayHasKey('factories', $viewHelpers);
