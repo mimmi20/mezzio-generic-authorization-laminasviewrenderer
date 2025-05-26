@@ -24,7 +24,7 @@
   },
   "require": {
     "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
-    "laminas/laminas-view": "^2.38.0",
+    "laminas/laminas-view": "^2.39.0",
     "mezzio/mezzio-authentication": "^1.11.0",
     "mimmi20/mezzio-generic-authorization": "^4.0.0",
     "psr/container": "^1.1.2 || ^2.0.2",
