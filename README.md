@@ -7,11 +7,13 @@
 ## Code Status
 
 [![codecov](https://codecov.io/gh/mimmi20/mezzio-generic-authorization-laminasviewrenderer/branch/master/graph/badge.svg)](https://codecov.io/gh/mimmi20/mezzio-generic-authorization-laminasviewrenderer)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/8675e80d067bd869a6fb/test_coverage)](https://codeclimate.com/github/mimmi20/mezzio-generic-authorization-laminasviewrenderer/test_coverage)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/mimmi20/mezzio-generic-authorization-laminasviewrenderer.svg)](https://isitmaintained.com/project/mimmi20/mezzio-generic-authorization-laminasviewrenderer "Average time to resolve an issue")
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/mimmi20/mezzio-generic-authorization-laminasviewrenderer.svg)](https://isitmaintained.com/project/mimmi20/mezzio-generic-authorization-laminasviewrenderer "Percentage of issues still open")
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fmimmi20%2Fmezzio-generic-authorization-laminasviewrenderer%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/mimmi20/mezzio-generic-authorization-laminasviewrenderer/master)
-[![Maintainability](https://api.codeclimate.com/v1/badges/8675e80d067bd869a6fb/maintainability)](https://codeclimate.com/github/mimmi20/mezzio-generic-authorization-laminasviewrenderer/maintainability)
+
+## Introduction
+
+This component provides a viewhelper for mezzio-generic-authorization.
 
 ## Installation
 
