@@ -13,17 +13,17 @@ declare(strict_types = 1);
 
 namespace Mimmi20\Mezzio\GenericAuthorization\LaminasView;
 
-use Laminas\View\Helper\AbstractHelper;
+use Laminas\View\Helper\HelperInterface;
 use Mezzio\Authentication\UserInterface;
 use Mimmi20\Mezzio\GenericAuthorization\AuthorizationInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function count;
 
-final class Authorization extends AbstractHelper
+final readonly class Authorization implements HelperInterface
 {
     /** @throws void */
-    public function __construct(private readonly AuthorizationInterface $authorization)
+    public function __construct(private AuthorizationInterface $authorization)
     {
         // nothing to do
     }
