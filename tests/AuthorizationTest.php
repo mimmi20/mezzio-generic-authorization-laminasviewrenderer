@@ -27,7 +27,7 @@ final class AuthorizationTest extends TestCase
         $role      = 'test-role';
         $resource  = 'test-resource';
         $privilege = 'test-privilege';
-        $request   = $this->createStub(ServerRequestInterface::class);
+        $request   = self::createStub(ServerRequestInterface::class);
 
         $authorizationInterface = $this->createMock(AuthorizationInterface::class);
         $authorizationInterface->expects(self::once())
@@ -47,7 +47,7 @@ final class AuthorizationTest extends TestCase
         $role2     = 'test-role2';
         $resource  = 'test-resource';
         $privilege = 'test-privilege';
-        $request   = $this->createStub(ServerRequestInterface::class);
+        $request   = self::createStub(ServerRequestInterface::class);
 
         $user = $this->createMock(UserInterface::class);
         $user->expects(self::once())
@@ -100,7 +100,7 @@ final class AuthorizationTest extends TestCase
         $role2     = 'test-role2';
         $resource  = 'test-resource';
         $privilege = 'test-privilege';
-        $request   = $this->createStub(ServerRequestInterface::class);
+        $request   = self::createStub(ServerRequestInterface::class);
 
         $user = $this->createMock(UserInterface::class);
         $user->expects(self::once())
