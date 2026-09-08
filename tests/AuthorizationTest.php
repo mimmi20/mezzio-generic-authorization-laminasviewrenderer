@@ -15,61 +15,46 @@ namespace Mimmi20\Mezzio\GenericAuthorization\LaminasView;
 
 use Mezzio\Authentication\UserInterface;
 use Mimmi20\Mezzio\GenericAuthorization\AuthorizationInterface;
-use PHPUnit\Event\NoPreviousThrowableException;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 
 final class AuthorizationTest extends TestCase
 {
-    /**
-     * @throws Exception
-     * @throws NoPreviousThrowableException
-     * @throws \PHPUnit\Framework\MockObject\Exception
-     */
+    /** @throws Exception */
     public function testIsGranted(): void
     {
         $role      = 'test-role';
         $resource  = 'test-resource';
         $privilege = 'test-privilege';
-        $request   = $this->createMock(ServerRequestInterface::class);
+        $request   = self::createStub(ServerRequestInterface::class);
 
-        $authorizationInterface = $this->getMockBuilder(AuthorizationInterface::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $authorizationInterface = $this->createMock(AuthorizationInterface::class);
         $authorizationInterface->expects(self::once())
             ->method('isGranted')
             ->with($role, $resource, $privilege, $request)
-            ->willReturn(true);
+            ->willReturn(value: true);
 
         $authorization = new Authorization($authorizationInterface);
 
         self::assertTrue($authorization->isGranted($role, $resource, $privilege, $request));
     }
 
-    /**
-     * @throws Exception
-     * @throws NoPreviousThrowableException
-     * @throws \PHPUnit\Framework\MockObject\Exception
-     */
+    /** @throws Exception */
     public function testIsGrantedForUser(): void
     {
         $role1     = 'test-role1';
         $role2     = 'test-role2';
         $resource  = 'test-resource';
         $privilege = 'test-privilege';
-        $request   = $this->createMock(ServerRequestInterface::class);
+        $request   = self::createStub(ServerRequestInterface::class);
 
-        $user = $this->getMockBuilder(UserInterface::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $user = $this->createMock(UserInterface::class);
         $user->expects(self::once())
             ->method('getRoles')
             ->willReturn([$role1, $role2]);
 
-        $authorizationInterface = $this->getMockBuilder(AuthorizationInterface::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $authorizationInterface = $this->createMock(AuthorizationInterface::class);
         $matcher                = self::exactly(2);
         $authorizationInterface->expects($matcher)
             ->method('isGranted')
@@ -108,29 +93,21 @@ final class AuthorizationTest extends TestCase
         self::assertTrue($authorization->isGrantedForUser($user, $resource, $privilege, $request));
     }
 
-    /**
-     * @throws Exception
-     * @throws NoPreviousThrowableException
-     * @throws \PHPUnit\Framework\MockObject\Exception
-     */
+    /** @throws Exception */
     public function testIsNotGrantedForUser(): void
     {
         $role1     = 'test-role1';
         $role2     = 'test-role2';
         $resource  = 'test-resource';
         $privilege = 'test-privilege';
-        $request   = $this->createMock(ServerRequestInterface::class);
+        $request   = self::createStub(ServerRequestInterface::class);
 
-        $user = $this->getMockBuilder(UserInterface::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $user = $this->createMock(UserInterface::class);
         $user->expects(self::once())
             ->method('getRoles')
             ->willReturn([$role1, $role2]);
 
-        $authorizationInterface = $this->getMockBuilder(AuthorizationInterface::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $authorizationInterface = $this->createMock(AuthorizationInterface::class);
         $matcher                = self::exactly(2);
         $authorizationInterface->expects($matcher)
             ->method('isGranted')
