@@ -29,7 +29,7 @@ final class AuthorizationFactoryTest extends TestCase
      */
     public function testInvocation(): void
     {
-        $authorizationInterface = $this->createStub(AuthorizationInterface::class);
+        $authorizationInterface = self::createStub(AuthorizationInterface::class);
 
         $container = $this->createMock(ContainerInterface::class);
         $container->expects(self::once())
