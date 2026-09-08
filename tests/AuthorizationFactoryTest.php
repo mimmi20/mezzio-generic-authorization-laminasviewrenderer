@@ -14,7 +14,6 @@ declare(strict_types = 1);
 namespace Mimmi20\Mezzio\GenericAuthorization\LaminasView;
 
 use Mimmi20\Mezzio\GenericAuthorization\AuthorizationInterface;
-use PHPUnit\Event\NoPreviousThrowableException;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
@@ -27,16 +26,12 @@ final class AuthorizationFactoryTest extends TestCase
     /**
      * @throws Exception
      * @throws ContainerExceptionInterface
-     * @throws NoPreviousThrowableException
-     * @throws \PHPUnit\Framework\MockObject\Exception
      */
     public function testInvocation(): void
     {
-        $authorizationInterface = $this->createMock(AuthorizationInterface::class);
+        $authorizationInterface = self::createStub(AuthorizationInterface::class);
 
-        $container = $this->getMockBuilder(ContainerInterface::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $container = $this->createMock(ContainerInterface::class);
         $container->expects(self::once())
             ->method('get')
             ->with(AuthorizationInterface::class)
