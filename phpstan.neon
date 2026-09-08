@@ -109,6 +109,8 @@ parameters:
 
   ignoreErrors:
     - '~will always evaluate to true~'
+    -
+      identifier: argument.named
 
 services:
   errorFormatter.sarif:
