@@ -69,7 +69,13 @@ final class Authorization extends AbstractHelper
                     return true;
                 }
             }
-        } elseif ($this->authorization->isGranted(null, $resource, $privilege, $request)) {
+        } elseif (
+            $this->authorization->isGranted(
+                resource: $resource,
+                privilege: $privilege,
+                request: $request,
+            )
+        ) {
             return true;
         }
 

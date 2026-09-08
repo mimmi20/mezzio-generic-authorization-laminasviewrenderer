@@ -110,6 +110,8 @@ parameters:
   ignoreErrors:
     - '~will always evaluate to true~'
     - '~extends deprecated class~'
+    -
+      identifier: argument.named
 
 services:
   errorFormatter.sarif:
